@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolución de los Videojuegos | Presentación Profesional</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@500;700&display=swap');
+
+        :root {
+            --primary: #00d4aa;
+            --secondary: #7b61ff;
+            --accent: #ff6b6b;
+            --bg-dark: #0b0c15;
+            --bg-card: #12141f;
+            --text: #e8e8f0;
+            --text-muted: #9a9ab0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(11, 12, 21, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 120px 8% 80px;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(0, 212, 170, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(123, 97, 255, 0.08) 0%, transparent 50%),
+                var(--bg-dark);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(0, 212, 170, 0.15);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, #00d4aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 540px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 6%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42%;
+            max-width: 520px;
+            z-index: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .section {
+            padding: 100px 8%;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: var(--bg-card);
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin-bottom: 60px;
+        }
+
+        .section-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--primary);
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .content-grid.reverse {
+            direction: rtl;
+        }
+
+        .content-grid.reverse > * {
+            direction: ltr;
+        }
+
+        .text-block h3 {
+            font-size: 1.35rem;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .text-block p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .text-block ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .text-block ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .text-block ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .image-block img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: transform 0.4s ease;
+        }
+
+        .image-block img:hover {
+            transform: scale(1.02);
+        }
+
+        .dual-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .dual-images img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.06);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+            transition: transform 0.3s ease;
+        }
+
+        .dual-images img:hover {
+            transform: translateY(-6px);
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            position: relative;
+            padding: 0 10px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0.4;
+        }
+
+        .timeline-item {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            box-shadow: 0 0 0 6px rgba(0, 212, 170, 0.2);
+        }
+
+        .timeline-item strong {
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .timeline-item span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            padding: 50px 8%;
+            text-align: center;
+            background: #080910;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer .logo {
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-image {
+                display: none;
+            }
+            .hero-content {
+                text-align: center;
+                max-width: 100%;
+            }
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .content-grid.reverse {
+                direction: ltr;
+            }
+            .dual-images {
+                grid-template-columns: 1fr;
+            }
+            .dual-images img {
+                height: 240px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 14px 5%;
+            }
+            .nav-links {
+                gap: 18px;
+            }
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+            .section {
+                padding: 70px 5%;
+            }
+            .timeline {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .timeline::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">GAME EVOLUTION</div>
+        <div class="nav-links">
+            <a href="#origenes">Orígenes</a>
+            <a href="#edad-oro">Edad de Oro</a>
+            <a href="#era-moderna">Era Moderna</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Presentación Interactiva</span>
+            <h1>La Evolución de los Videojuegos</h1>
+            <p>
+                Un recorrido profesional por más de 50 años de innovación, 
+                desde las primeras máquinas arcade hasta los mundos 
+                virtuales de la actualidad.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <strong>50+</strong>
+                    <span>Años de historia</span>
+                </div>
+                <div class="stat">
+                    <strong>$200B+</strong>
+                    <span>Industria global</span>
+                </div>
+                <div class="stat">
+                    <strong>3.2B</strong>
+                    <span>Jugadores en el mundo</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+        
+        </div>
+    </header>
+
+    <section class="section" id="origenes">
+        <div class="section-header">
+            <span class="section-number">01 — LOS COMIENZOS</span>
+            <h2>Orígenes de una Revolución<br>(1970 – 1989)</h2>
+            <p>
+                Todo empezó con circuitos simples y pantallas en blanco y negro. 
+                Los pioneros sentaron las bases de lo que hoy es una de las 
+                industrias creativas más grandes del planeta.
+            </p>
+        </div>
+
+        <div class="content-grid">
+            <div class="text-block">
+                <h3>Del laboratorio a las salas de juego</h3>
+                <p>
+                    En 1972, <strong>Pong</strong> de Atari demostró que los videojuegos 
+                    podían ser un negocio. Poco después, títulos como 
+                    <em>Space Invaders</em> y <em>Pac-Man</em> generaron una fiebre 
+                    cultural sin precedentes.
+                </p>
+                <ul>
+                    <li>1972 – Pong: el primer éxito comercial masivo</li>
+                    <li>1978 – Space Invaders populariza las máquinas arcade</li>
+                    <li>1980 – Pac-Man se convierte en fenómeno mundial</li>
+                    <li>1985 – Nintendo Entertainment System revive el mercado casero</li>
+                </ul>
+            </div>
+            <div class="image-block">
+                <img src="imagesreferenciagamer2.jpg" alt="Máquinas arcade clásicas de los años 70 y 80">
+            </div>
+        </div>
+
+        <div class="dual-images">
+            <img src="imagesreferenciagamer3.jpg" alt="Consolas de 8 bits - Nintendo y Sega">
+            <img src="imagesreferenciagamer4.png" alt="Juegos icónicos de la era de los 8 bits">
+        </div>
+    </section>
+
+    <section class="section" id="edad-oro">
+        <div class="section-header">
+            <span class="section-number">02 — LA EXPLOSIÓN CREATIVA</span>
+            <h2>La Edad de Oro<br>(1990 – 2009)</h2>
+            <p>
+                La llegada del 3D, las CD-ROM y las primeras sagas narrativas 
+                elevaron los videojuegos al nivel de forma artística y 
+                entretenimiento de masas.
+            </p>
+        </div>
+
+        <div class="content-grid reverse">
+            <div class="text-block">
+                <h3>La revolución de los 32 y 64 bits</h3>
+                <p>
+                    PlayStation, Nintendo 64 y luego Dreamcast y Xbox abrieron 
+                    un nuevo universo. Títulos como <em>Super Mario 64</em>, 
+                    <em>Final Fantasy VII</em> y <em>The Legend of Zelda: Ocarina of Time</em> 
+                    definieron generaciones enteras.
+                </p>
+                <ul>
+                    <li>1996 – Super Mario 64 redefine el control en 3D</li>
+                    <li>1997 – Final Fantasy VII populariza las historias cinematográficas</li>
+                    <li>2001 – Xbox y el auge de los juegos online</li>
+                    <li>2004-2007 – World of Warcraft y la era del MMORPG</li>
+                </ul>
+            </div>
+            <div class="image-block">
+                <img src="imagesreferenciagamer5.png" alt="Consolas de 32/64 bits y juegos 3D icónicos">
+            </div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <strong>1994</strong>
+                <span>PlayStation</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <strong>1996</strong>
+                <span>N64 & Mario 64</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <strong>2000</strong>
+                <span>PS2</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <strong>2005</strong>
+                <span>Xbox 360</span>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <strong>2006</strong>
+                <span>Wii</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="era-moderna">
+        <div class="section-header">
+            <span class="section-number">03 — EL PRESENTE Y EL FUTURO</span>
+            <h2>La Era Moderna<br>(2010 – Actualidad)</h2>
+            <p>
+                Gráficos fotorrealistas, servicios en la nube, realidad virtual, 
+                móviles y esports. Los videojuegos se convirtieron en el 
+                principal medio de entretenimiento del siglo XXI.
+            </p>
+        </div>
+
+        <div class="content-grid">
+            <div class="text-block">
+                <h3>Una industria global e interconectada</h3>
+                <p>
+                    Hoy más de 3.200 millones de personas juegan. Fortnite, 
+                    GTA Online, League of Legends y los servicios de suscripción 
+                    han transformado la forma de consumir y crear experiencias.
+                </p>
+                <ul>
+                    <li>Mobile gaming: la mayor base de jugadores del mundo</li>
+                    <li>Esports y streaming: nuevas profesiones y espectáculos</li>
+                    <li>Ray Tracing, 4K y 120 fps: realismo sin precedentes</li>
+                    <li>Cloud gaming y cross-play: jugar desde cualquier dispositivo</li>
+                    <li>Realidad Virtual y Metaverso: el siguiente salto</li>
+                </ul>
+            </div>
+            <div class="image-block">
+                <img src="imagesreferenciagamer1.jpg" alt="Juegos modernos, esports y realidad virtual">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">GAME EVOLUTION</div>
+        <p>Presentación profesional sobre la evolución de los videojuegos · 2025</p>
+    </footer>
+
+</body>
+</html>
